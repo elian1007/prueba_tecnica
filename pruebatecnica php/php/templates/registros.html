@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registros</title>
+</head>
+<body>
+    <h1>Registros</h1>
+    <table>
+        <tr>
+            <th>Código</th>
+            <th>Nombre de Archivo</th>
+            <th>Cantidad de Líneas</th>
+            <th>Cantidad de Palabras</th>
+            <th>Cantidad de Caracteres</th>
+            <th>Fecha de Registro</th>
+        </tr>
+        <?php
+        // Conecta a la base de datos
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+
+        // Consulta todos los registros de la tabla "informacion"
+        $result = $conn->query("SELECT * FROM informacion");
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row['codigo'] . "</td>";
+                echo "<td>" . $row['nombrearchivo'] . "</td>";
+                echo "<td>" . $row['cantlineas'] . "</td>";
+                echo "<td>" . $row['cantpalabras'] . "</td>";
+                echo "<td>" . $row['cantcaracteres'] . "</td>";
+                echo "<td>" . $row['fecharegistro'] . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "No hay registros en la base de datos.";
+        }
+
+        $conn->close();
+        ?>
+    </table>
+    <br>
+    <a href="generar_pdf.php">Descargar a PDF</a>
+</body>
+</html>

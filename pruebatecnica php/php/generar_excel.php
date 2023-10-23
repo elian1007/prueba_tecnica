@@ -20,7 +20,6 @@ function obtenerDatosDesdeBaseDeDatos() {
 
     // Verificar si se obtuvieron resultados
     if ($result->num_rows > 0) {
-        // Inicializa un arreglo para almacenar los datos
         $registros = array();
 
         // Recorrer los resultados y almacenarlos en el arreglo
@@ -48,7 +47,7 @@ $spreadsheet = new Spreadsheet();
 // Crear una hoja
 $sheet = $spreadsheet->getActiveSheet();
 
-// Agregar datos a la hoja (reemplaza con tus propios datos)
+// Agregar datos a la hoja 
 $sheet->setCellValue('A1', 'Nombre de Archivo');
 $sheet->setCellValue('B1', 'Cantidad de Líneas');
 $sheet->setCellValue('C1', 'Cantidad de Palabras');
@@ -57,7 +56,7 @@ $sheet->setCellValue('E1', 'Fecha de registro');
 
 
 
-// Obtener datos de la base de datos (reemplaza con tu propia lógica de obtención de datos)
+// Obtener datos de la base de datos 
 $registros = obtenerDatosDesdeBaseDeDatos();
 
 // Llenar la hoja de cálculo con los registros
